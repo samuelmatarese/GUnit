@@ -38,6 +38,7 @@ public class TestEngine(SceneTree tree)
                         throw new TimeoutException($"Test {method.Name} timed out");
                     }
 
+                    await test;
                     result.Passed++;
                 }
                 catch (Exception e)
