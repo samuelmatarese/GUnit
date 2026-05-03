@@ -15,6 +15,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+          
+      - name: Install workloads
+        run: dotnet workload install godot
 
       - name: Restore
         run: dotnet restore
