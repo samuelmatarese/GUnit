@@ -10,6 +10,10 @@
   <EnableGodotSourceGenerators>false</EnableGodotSourceGenerators>
   <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+
+  <PackageId>samuelmatarese.GUnit.Library</PackageId>
+  <Version>1.0.0</Version>
+  <Authors>Samuel Matarese</Authors>
 </PropertyGroup>
 
 </Project>
