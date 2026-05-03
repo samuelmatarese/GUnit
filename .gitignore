@@ -1,0 +1,10 @@
+.vscode
+
+# GUnit.CLI
+/GUnit.CLI/bin/ 
+/GUnit.CLI/obj/
+
+# GUnit.Library
+/GUnit.Library/bin/ 
+/GUnit.Library/obj/ 
+/GUnit.Library/.godot/
