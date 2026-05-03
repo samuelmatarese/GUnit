@@ -1,3 +1,5 @@
+using System;
+
 namespace GUnit.Library.Assertions;
 
 public static class Assert
