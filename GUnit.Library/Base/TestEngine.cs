@@ -10,6 +10,8 @@ namespace GUnit.Library.Base;
 
 public class TestEngine(SceneTree tree)
 {
+    private const int TestTimeoutInMs = 30000;
+
     public async Task<TestResult> RunAll()
     {
         var result = new TestResult();
@@ -29,8 +31,12 @@ public class TestEngine(SceneTree tree)
 
                 try
                 {
-                    await testInstance.RunMethod(tree, method);
-                    method.Invoke(testInstance, null);
+                    var test = testInstance.RunMethod(tree, method);
+
+                    if (await Task.WhenAny(test, Task.Delay(TestTimeoutInMs)) != test)
+                    {
+                        throw new TimeoutException($"Test {method.Name} timed out");
+                    }
 
                     result.Passed++;
                 }
