@@ -6,7 +6,7 @@ namespace Gunit.CLI.Commands;
 
 public class ConfigurationCommand : ICommand
 {
-    public void Execute()
+    public Task Execute()
     {
         Console.WriteLine("Path to your Godot Executable:");
         var godotExecutablePath = Console.ReadLine();
@@ -14,7 +14,7 @@ public class ConfigurationCommand : ICommand
         if (string.IsNullOrEmpty(godotExecutablePath))
         {
             Console.WriteLine("No Path for GodotExecutable assigned");
-            return;    
+            return Task.CompletedTask;    
         }
 
         var config = new GUnitConfig(godotExecutablePath);
@@ -24,5 +24,6 @@ public class ConfigurationCommand : ICommand
         });
 
         ConfigurationHelper.CreateConfig(json);
+        return Task.CompletedTask;
     }
 }

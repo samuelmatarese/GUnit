@@ -14,4 +14,4 @@ ICommand command = args[0] switch
     _ => throw new ArgumentException($"No Command for '{args[0]}' defined.")
 };
 
-command.Execute();
+await command.Execute();

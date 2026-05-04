@@ -20,14 +20,18 @@ public abstract class BaseTest
             await Setup();
 
             var result = method.Invoke(this, null);
+            
             if (result is Task task)
+            {
                 await task;
+            }
 
            await Teardown();
         }
         finally
         {
            Root.QueueFree();
+           await Task.Yield();
         }
     }
 

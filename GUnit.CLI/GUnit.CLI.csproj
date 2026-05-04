@@ -9,8 +9,8 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>gunit</ToolCommandName>
 
-    <PackageId>samuelmatarese.GUnit.CLI</PackageId>
-    <Version>1.1.0</Version>
+    <PackageId>GUnit.CLI</PackageId>
+    <Version>0.1.0</Version>
   </PropertyGroup>
 
 </Project>

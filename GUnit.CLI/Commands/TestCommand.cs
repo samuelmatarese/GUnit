@@ -5,7 +5,7 @@ namespace Gunit.CLI.Commands;
 
 public class TestCommand : ICommand
 {
-    public void Execute()
+    public async Task Execute()
     {
         var config = ConfigurationHelper.ReadConfig();
         
@@ -22,13 +22,15 @@ public class TestCommand : ICommand
             }
         };
 
+        process.OutputDataReceived += (_, e) =>
+        {
+            if (e.Data != null)
+                Console.WriteLine(e.Data);
+        };
+
         process.Start();
+        process.BeginOutputReadLine();
 
-        var output = process.StandardOutput.ReadToEnd();
-        var error = process.StandardError.ReadToEnd();
-
-        process.WaitForExit();
-        Console.WriteLine(output);
-        Console.WriteLine(error);
+        await process.WaitForExitAsync();
     }
 }
