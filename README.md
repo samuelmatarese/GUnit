@@ -1,27 +1,14 @@
 # GUnit
-A small library to Test your .Net Godot Projects with unit tests.
 
-## Installation
-Run the following command to install the dotnet tool globaly.
-```
-dotnet tool install --global GUnit.CLI
-```
+GUnit is a lightweight testing framework designed for use with Godot projects.
 
-# Development
+## Important Information
 
-## GUnit.CLI
+GUnit is currently in beta. As a result, you may encounter bugs or unexpected behavior, and compatibility with all Godot projects is not guaranteed.
 
-To install a local version run the following commands. Also ensure that dotnet tools are registered in the PATH.
+At this time, GUnit has only been tested on Linux. Support for other operating systems may be limited or unverified.
 
-```
-dotnet pack -c Release
-```
+## Getting Started
 
-```
-dotnet tool install --global GUnit.CLI --add-source ./bin/Release
-```
-
-To uninstall run
-```
-dotnet tool uninstall -g GUnit.CLI
-```
+To begin using GUnit, follow the installation guide:
+[Installation](https://github.com/samuelmatarese/GUnit/wiki/Installation)
