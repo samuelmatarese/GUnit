@@ -4,7 +4,7 @@ A small library to Test your .Net Godot Projects with unit tests.
 ## Installation
 Run the following command to install the dotnet tool globaly.
 ```
-dotnet tool install --global samuelmatarese.GUnit.CLI
+dotnet tool install --global GUnit.CLI
 ```
 
 # Development
@@ -18,10 +18,10 @@ dotnet pack -c Release
 ```
 
 ```
-dotnet tool install --global samuelmatarese.GUnit.CLI --add-source ./bin/Release
+dotnet tool install --global GUnit.CLI --add-source ./bin/Release
 ```
 
 To uninstall run
 ```
-dotnet tool uninstall -g samuelmatarese.GUnit.CLI
+dotnet tool uninstall -g GUnit.CLI
 ```
