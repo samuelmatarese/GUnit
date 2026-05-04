@@ -35,6 +35,11 @@ public abstract class BaseTest
         }
     }
 
+    protected async Task WaitForFrame()
+    {
+        await Tree.ToSignal(Tree, SceneTree.SignalName.ProcessFrame);
+    }
+
     protected virtual Task Setup() => Task.CompletedTask;
     protected virtual Task Teardown() => Task.CompletedTask;
 }
