@@ -11,7 +11,7 @@ namespace GUnit.Library.Base;
 public class TestEngine(SceneTree tree)
 {
 
-    public async Task<TestResult> RunAll()
+    public async Task RunAll()
     {
         var result = new TestResult();
         var tests = AppDomain.CurrentDomain.GetAssemblies()
@@ -42,13 +42,19 @@ public class TestEngine(SceneTree tree)
                         : e;
                         
                     result.Failed++;
-                    result.Errors.Add(innerException);
+                    testCase.EncounteredException = innerException;
                 }   
+
+                result.TestCases.Add(testCase);
             }
         }
 
         Console.WriteLine(result.ToString());
-        return result;
+        
+        if(result.Failed > 0)
+        {
+            throw new Exception("Some Tests were not successful");
+        }
     }
 
     private IEnumerable<TestCase> ConvertTheoriesToNormalTests(Type classType)
