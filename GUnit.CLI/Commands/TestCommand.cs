@@ -27,15 +27,14 @@ public class TestCommand : ICommand
         process.BeginErrorReadLine();
 
         await process.WaitForExitAsync();
-        WriteTestResultToConsole();
 
-        if (process.ExitCode != 0)
+        if (!ValidateTestResult())
         {
             throw new Exception($"GUnit Test Run failed (ExitCode: {process.ExitCode})");
         }
     }
 
-    private void WriteTestResultToConsole()
+    private bool ValidateTestResult()
     {
         var resultFile = Path.Combine(
             Directory.GetCurrentDirectory(),
@@ -46,10 +45,17 @@ public class TestCommand : ICommand
         {
             var content = File.ReadAllText(resultFile);
             Console.WriteLine(content);
+
+            if (content.Contains("Failed: 0") == true)
+            {
+                return true;
+            }
         }
         else
         {
             Console.WriteLine("No result file found.");
         }
+
+        return false;
     }
 }

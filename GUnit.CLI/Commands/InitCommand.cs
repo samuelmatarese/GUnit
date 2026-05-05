@@ -32,10 +32,6 @@ public partial class GodotTestRunner : SceneTree
     {
         var engine = new TestEngine(this);
         await engine.RunAll();
-
-        await ToSignal(this, SceneTree.SignalName.ProcessFrame); 
-        await ToSignal(this, SceneTree.SignalName.PhysicsFrame);
-
         Quit();
     }
 }
