@@ -33,17 +33,8 @@ public class TestCommand : ICommand
         {
             if (e.Data != null)
             {
+                Console.Error.WriteLine(e.Data);
                 errorOccurred = true;
-                
-                try
-                {
-                    if (!process.HasExited)
-                        process.Kill(true);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error at exiting process: {ex.Message}");
-                }
             }
         };
 

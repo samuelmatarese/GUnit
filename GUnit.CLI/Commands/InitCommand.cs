@@ -31,6 +31,7 @@ public partial class GodotTestRunner : SceneTree
     {
         var engine = new TestEngine(this);
         await engine.RunAll();
+        await Task.Delay(100);
         Quit();
     }
 }

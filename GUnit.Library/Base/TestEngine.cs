@@ -51,11 +51,7 @@ public class TestEngine(SceneTree tree)
         }
 
         Console.WriteLine(result.ToString());
-        
-        if(result.Failed > 0)
-        {
-            throw new Exception("Some Tests were not successful");
-        }
+        System.Environment.Exit(result.Failed > 0 ? 1 : 0);
     }
 
     private IEnumerable<TestCase> ConvertTheoriesToNormalTests(Type classType)
