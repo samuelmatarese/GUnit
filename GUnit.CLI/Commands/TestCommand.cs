@@ -41,6 +41,8 @@ public class TestCommand : ICommand
             "GUnit/gunit-test-result.txt"
         );
 
+        Console.WriteLine(resultFile);
+        
         if (File.Exists(resultFile))
         {
             var content = File.ReadAllText(resultFile);
