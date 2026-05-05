@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using GUnit.Library.Base;
+using System.Threading.Tasks;
 
 internal partial class TestRunner : SceneTree
 {
