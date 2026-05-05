@@ -52,7 +52,12 @@ public class TestEngine(SceneTree tree)
         }
 
         var filePath = Path.Combine(Directory.GetCurrentDirectory(), "GUnit/gunit-test-result.txt");
-        File.WriteAllText(filePath, result.ToString());
+        await File.WriteAllTextAsync(filePath, result.ToString());
+
+        if (!File.Exists(filePath))
+        {
+            throw new Exception("File wasn't created");
+        }
     }
 
     private IEnumerable<TestCase> ConvertTheoriesToNormalTests(Type classType)
