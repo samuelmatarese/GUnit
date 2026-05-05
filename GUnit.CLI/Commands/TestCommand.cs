@@ -22,6 +22,11 @@ public class TestCommand : ICommand
             }
         };
 
+        process.ErrorDataReceived += (_, data) =>
+        {
+            Console.WriteLine(data);   
+        };
+
         process.Start();
         process.BeginOutputReadLine();
         process.BeginErrorReadLine();
