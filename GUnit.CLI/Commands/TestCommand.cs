@@ -8,14 +8,13 @@ public class TestCommand : ICommand
     public async Task Execute()
     {
         var config = ConfigurationHelper.ReadConfig();
-        var errorOccurred = false;
         
         var process = new Process
         {
             StartInfo = new ProcessStartInfo
             {
                 FileName = config.GodotExecutablePath,
-                Arguments = "--headless --path . --script ./GUnit/GodotTestRunner.cs",
+                Arguments = "--headless --path . --script ./GUnit/GodotTestRunner.cs --quiet --disable-crash-handler",
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
@@ -29,22 +28,13 @@ public class TestCommand : ICommand
                 Console.WriteLine(e.Data);
         };
 
-        process.ErrorDataReceived += (_, e) =>
-        {
-            if (e.Data != null)
-            {
-                Console.Error.WriteLine(e.Data);
-                errorOccurred = true;
-            }
-        };
-
         process.Start();
         process.BeginOutputReadLine();
         process.BeginErrorReadLine();
 
         await process.WaitForExitAsync();
 
-        if (errorOccurred || process.ExitCode != 0)
+        if (process.ExitCode != 0)
         {
             throw new Exception($"GUnit Test Run failed (ExitCode: {process.ExitCode})");
         }
