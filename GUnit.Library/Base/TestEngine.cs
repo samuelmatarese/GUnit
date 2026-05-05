@@ -52,7 +52,11 @@ public class TestEngine(SceneTree tree)
         }
 
         File.WriteAllText("GUnit/gunit-test-result.txt", result.ToString());
-        System.Environment.Exit(result.Failed > 0 ? 1 : 0);
+
+        if(result.Failed > 0)
+        {
+            System.Environment.Exit(1);
+        }
     }
 
     private IEnumerable<TestCase> ConvertTheoriesToNormalTests(Type classType)
