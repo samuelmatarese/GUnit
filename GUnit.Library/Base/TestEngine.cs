@@ -50,10 +50,11 @@ public class TestEngine(SceneTree tree)
                 result.TestCases.Add(testCase);
             }
         }
-       
+
         var filePath = Path.Combine(Directory.GetCurrentDirectory(), "GUnit/gunit-test-result.txt");
-        await File.WriteAllTextAsync(filePath, result.ToString());
-        throw new Exception(filePath);
+        File.WriteAllText(filePath, result.ToString());
+        var fi = new FileInfo(filePath);
+        fi.Refresh();
     }
 
     private IEnumerable<TestCase> ConvertTheoriesToNormalTests(Type classType)

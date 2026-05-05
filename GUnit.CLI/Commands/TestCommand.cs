@@ -21,12 +21,7 @@ public class TestCommand : ICommand
                 CreateNoWindow = true,
             }
         };
-
-        process.ErrorDataReceived += (_, data) =>
-        {
-            Console.WriteLine(data);   
-        };
-
+        
         process.Start();
         process.BeginOutputReadLine();
         process.BeginErrorReadLine();
