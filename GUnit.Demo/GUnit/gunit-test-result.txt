@@ -1,9 +1,0 @@
-✅ _Input 
-✅ _Input_Theory (Godot.InputEventAction)
-✅ _Input_Theory (Godot.InputEventMouseButton)
-✅ _Input_Theory (Godot.InputEventMouseMotion)
-------------------------------------------------------
-Total: 4
-✅Passed: 4
-❌ Failed: 0
-------------------------------------------------------
