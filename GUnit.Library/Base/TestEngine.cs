@@ -50,7 +50,7 @@ public class TestEngine(SceneTree tree)
             }
         }
 
-        Console.WriteLine(result.ToString());
+        File.WriteAllText("GUnit/gunit-test-result.txt", result.ToString());
         System.Environment.Exit(result.Failed > 0 ? 1 : 0);
     }
 
