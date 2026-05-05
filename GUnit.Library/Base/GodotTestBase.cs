@@ -9,7 +9,8 @@ public abstract class BaseTest
     protected SceneTree Tree;
     protected Node Root;
 
-    public async Task RunMethod(SceneTree tree, MethodInfo method)
+    #nullable enable
+    public async Task RunMethod(SceneTree tree, MethodInfo method, object[]? parameters = null)
     {   
         Tree = tree;
         Root = new Node();
@@ -19,7 +20,7 @@ public abstract class BaseTest
         {
             await Setup();
 
-            var result = method.Invoke(this, null);
+            var result = method.Invoke(this, parameters);
             
             if (result is Task task)
             {
@@ -35,9 +36,12 @@ public abstract class BaseTest
         }
     }
 
-    protected async Task WaitForFrame()
+    protected async Task WaitForFrame(int frameAmount = 1)
     {
-        await Tree.ToSignal(Tree, SceneTree.SignalName.ProcessFrame);
+        for(var i = 0; i < frameAmount; i++ )
+        {
+            await Tree.ToSignal(Tree, SceneTree.SignalName.ProcessFrame);
+        }
     }
 
     protected virtual Task Setup() => Task.CompletedTask;

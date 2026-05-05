@@ -21,16 +21,18 @@ public class TestEngine(SceneTree tree)
         foreach (var type in tests)
         {
             var testInstance = (BaseTest)Activator.CreateInstance(type);
-            var methods = type.GetMethods()
-                .Where(m => m.GetCustomAttributes(typeof(TestAttribute), false).Any());
+            var testCases = type.GetMethods()
+                .Where(m => m.GetCustomAttributes(typeof(TestAttribute), false).Any())
+                .Select(m => new TestCase(m))
+                .Concat(ConvertTheoriesToNormalTests(type));
 
-            foreach (var method in methods)
+            foreach (var testCase in testCases)
             {
                 result.Total++;
 
                 try
                 {
-                    await testInstance.RunMethod(tree, method);
+                    await testInstance.RunMethod(tree, testCase.Method, testCase.Parameters);
                     result.Passed++;
                 }
                 catch (Exception e)
@@ -47,5 +49,27 @@ public class TestEngine(SceneTree tree)
 
         Console.WriteLine(result.ToString());
         return result;
+    }
+
+    private IEnumerable<TestCase> ConvertTheoriesToNormalTests(Type classType)
+    {
+        var tests = new List<TestCase>();
+        var theories = classType.GetMethods()
+            .Where(m => m.GetCustomAttributes(typeof(TheoryAttribute), false).Any());
+
+        foreach(var theory in theories)
+        {
+            var dataAttributes = theory.GetCustomAttributes<SimpleDataAttribute>();
+
+            foreach (var data in dataAttributes)
+            {
+                if (theory.GetParameters().Length != data.Data.Length)
+                    throw new Exception("Parameter count mismatch");
+
+                tests.Add(new TestCase(theory, data.Data));
+            }
+        }
+
+        return tests;
     }
 }

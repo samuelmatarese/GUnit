@@ -8,3 +8,6 @@
 /GUnit.Library/bin/ 
 /GUnit.Library/obj/ 
 /GUnit.Library/.godot/
+
+# GUnit.Demo
+.godot/
