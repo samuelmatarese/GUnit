@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace GUnit.Library.Assertions;
 
@@ -21,10 +22,22 @@ public static class Assert
         if (!expected.Equals(actualResult))
             throw new Exception("Assert.Equal failed: " + message);
     }
-    
-    public static void OfType<T>(object actualResult, string message = "")
+
+    public static void OfType<T>(object actualResult)
     {
-        if (!(actualResult.GetType() == typeof(T)))
-            throw new Exception("Assert.OfType failed: " + message);
+        OfType(typeof(T), actualResult);
     }
+    
+    public static void OfType(Type expectedType, object actualResult)
+    {
+        if (actualResult.GetType() != expectedType)
+        {
+            var stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("Assert.OfType failed:");
+            stringBuilder.AppendLine($"ExpectedType: '{expectedType.Name}'");
+            stringBuilder.AppendLine($"ActualType: '{actualResult.GetType().Name}'");
+
+            throw new Exception(stringBuilder.ToString());
+        }
+    }    
 }
