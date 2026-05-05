@@ -1,19 +1,9 @@
-❌ _Input 
-Exception: Assert.OfType failed:
-ExpectedType: 'Boolean'
-ActualType: 'InputEventMouseMotion'
-
-   at GUnit.Library.Assertions.Assert.OfType(Type expectedType, Object actualResult) in /home/samuel/Daten/Git/GUnit/GUnit.Library/Assertions/Assert.cs:line 40
-   at GUnit.Library.Assertions.Assert.OfType[T](Object actualResult) in /home/samuel/Daten/Git/GUnit/GUnit.Library/Assertions/Assert.cs:line 28
-   at GUnit.Demo.Gunit.Scenes.TestSceneTest._Input() in /home/samuel/Daten/Git/GUnit/GUnit.Demo/GUnit/Scenes/TestSceneTest.cs:line 26
-   at GUnit.Library.Base.BaseTest.RunMethod(SceneTree tree, MethodInfo method, Object[] parameters) in /home/samuel/Daten/Git/GUnit/GUnit.Library/Base/GodotTestBase.cs:line 27
-   at GUnit.Library.Base.BaseTest.RunMethod(SceneTree tree, MethodInfo method, Object[] parameters) in /home/samuel/Daten/Git/GUnit/GUnit.Library/Base/GodotTestBase.cs:line 35
-   at GUnit.Library.Base.TestEngine.RunAll() in /home/samuel/Daten/Git/GUnit/GUnit.Library/Base/TestEngine.cs:line 36
+✅ _Input 
 ✅ _Input_Theory (Godot.InputEventAction)
 ✅ _Input_Theory (Godot.InputEventMouseButton)
 ✅ _Input_Theory (Godot.InputEventMouseMotion)
 ------------------------------------------------------
 Total: 4
-✅Passed: 3
-❌ Failed: 1
+✅Passed: 4
+❌ Failed: 0
 ------------------------------------------------------
