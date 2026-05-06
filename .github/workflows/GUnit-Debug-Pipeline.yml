@@ -22,6 +22,9 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release
 
+      - name: Build Demo Project
+        run: dotnet build GUnit.Demo/GUnit.Demo.csproj --configuration Release
+
       - name: Pack
         run: dotnet pack --configuration Release -o ./nupkg
 
