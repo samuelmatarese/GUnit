@@ -12,6 +12,7 @@ public class TestCommand : ICommand
             "GUnit/GodotTestRunner.cs"
         );
 
+        Console.WriteLine("Test");
         Console.WriteLine(testRunnerPath);
         var config = ConfigurationHelper.ReadConfig();
         
