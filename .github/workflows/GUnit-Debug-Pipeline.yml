@@ -36,7 +36,7 @@ jobs:
 
       - name: Create GUnit Config
         run: |
-          echo "${GITHUB_WORKSPACE}/godot/Godot_v4.6.2-stable_mono_linux_x86_64" | gunit config
+          echo "${GITHUB_WORKSPACE}/godot/Godot_v4.6.2-stable_mono_linux_x86_64/Godot_v4.6.2-stable_mono_linux_x86_64" | gunit config
 
       - name: Run Tests
         working-directory: ./GUnit.Demo
