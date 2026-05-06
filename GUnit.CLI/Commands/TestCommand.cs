@@ -12,6 +12,8 @@ public class TestCommand : ICommand
             "GUnit/GodotTestRunner.cs"
         );
 
+        Console.WriteLine($"Running TestRunner: {testRunnerPath}");
+
         var config = ConfigurationHelper.ReadConfig();
         
         var process = new Process

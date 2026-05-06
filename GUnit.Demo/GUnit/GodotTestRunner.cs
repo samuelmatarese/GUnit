@@ -21,7 +21,7 @@ public partial class GodotTestRunner : SceneTree
         await ToSignal(this, SceneTree.SignalName.ProcessFrame); 
         await ToSignal(this, SceneTree.SignalName.PhysicsFrame);
 
-        Quit();
+        Quit(testsSucceeded ? 0 : 1);
     }
 }
     
