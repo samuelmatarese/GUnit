@@ -9,7 +9,7 @@ public class TestCommand : ICommand
     {
         var testRunnerPath = Path.Combine(
             Directory.GetCurrentDirectory(),
-            "GUnit/GodotTestRunner.cs"
+            "../GUnit/GodotTestRunner.cs"
         );
 
         Console.WriteLine("Test");

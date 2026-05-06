@@ -15,7 +15,7 @@ public class TestEngine(SceneTree tree)
 
     public async Task RunAll()
     {
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "../GUnit/gunit-test-result.txt");
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "/GUnit/gunit-test-result.txt");
         File.WriteAllText(filePath, "Test 1");
         var result = new TestResult();
         var tests = AppDomain.CurrentDomain.GetAssemblies()
