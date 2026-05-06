@@ -13,7 +13,7 @@ namespace GUnit.Library.Base;
 public class TestEngine(SceneTree tree)
 {
 
-    public async Task RunAll()
+    public async Task<bool> RunAll()
     {
         var result = new TestResult();
         var tests = AppDomain.CurrentDomain.GetAssemblies()
@@ -52,7 +52,7 @@ public class TestEngine(SceneTree tree)
         }
 
         Console.WriteLine(result.ToString());
-        System.Environment.Exit(result.Failed > 0 ? 1 : 0);
+        return result.Failed == 0;
     }
 
     private IEnumerable<TestCase> ConvertTheoriesToNormalTests(Type classType)
