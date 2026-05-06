@@ -9,11 +9,13 @@ public class TestCommand : ICommand
     {
         var testRunnerPath = Path.Combine(
             Directory.GetCurrentDirectory(),
-            "../GUnit/GodotTestRunner.cs"
+            "GUnit/GodotTestRunner.cs"
         );
 
         Console.WriteLine("Test");
         Console.WriteLine(testRunnerPath);
+
+        Console.WriteLine("TestRunner Exists: " + File.Exists(testRunnerPath));
         var config = ConfigurationHelper.ReadConfig();
         
         var process = new Process
