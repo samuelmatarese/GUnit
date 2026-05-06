@@ -15,8 +15,7 @@ public class TestEngine(SceneTree tree)
 
     public async Task RunAll()
     {
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "/GUnit/gunit-test-result.txt");
-        File.WriteAllText(filePath, "Test 1");
+        Console.WriteLine("In TestEngine");
         var result = new TestResult();
         var tests = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(a => a.GetTypes())
@@ -53,9 +52,7 @@ public class TestEngine(SceneTree tree)
             }
         }
 
-        File.WriteAllText(filePath, result.ToString());
-        var fi = new FileInfo(filePath);
-        fi.Refresh();
+        Console.WriteLine(result.ToString());
     }
 
     private IEnumerable<TestCase> ConvertTheoriesToNormalTests(Type classType)
