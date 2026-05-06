@@ -14,7 +14,7 @@ public class TestCommand : ICommand
             StartInfo = new ProcessStartInfo
             {
                 FileName = config.GodotExecutablePath,
-                Arguments = "--headless --path . --script ./GUnit/GodotTestRunner.cs --quiet --disable-crash-handler",
+                Arguments = "--headless --path . --script ./GUnit/GodotTestRunnerss.cs --quiet --disable-crash-handler",
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
