@@ -15,6 +15,8 @@ public class TestEngine(SceneTree tree)
 
     public async Task RunAll()
     {
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "GUnit/gunit-test-result.txt");
+        File.WriteAllText(filePath, "Test 1");
         var result = new TestResult();
         var tests = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(a => a.GetTypes())
@@ -51,7 +53,6 @@ public class TestEngine(SceneTree tree)
             }
         }
 
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "GUnit/gunit-test-result.txt");
         File.WriteAllText(filePath, result.ToString());
         var fi = new FileInfo(filePath);
         fi.Refresh();
