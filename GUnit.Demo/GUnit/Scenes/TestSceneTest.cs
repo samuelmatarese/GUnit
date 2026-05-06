@@ -23,7 +23,7 @@ public class TestSceneTest : BaseTest
 
         // assert
         Assert.NotNull(testScene.RegisteredInput);
-        Assert.OfType<bool>(testScene.RegisteredInput);
+        Assert.OfType<InputEventMouseMotion>(testScene.RegisteredInput);
     }
 
     [Theory]
