@@ -43,34 +43,9 @@ public class TestCommand : ICommand
 
         await process.WaitForExitAsync();
 
-        if (!ValidateTestResult())
+        if (process.ExitCode != 0)
         {
             throw new Exception($"GUnit Test Run failed (ExitCode: {process.ExitCode})");
         }
-    }
-
-    private bool ValidateTestResult()
-    {
-        var resultFile = Path.Combine(
-            Directory.GetCurrentDirectory(),
-            "GUnit/gunit-test-result.txt"
-        );
-
-        if (File.Exists(resultFile))
-        {
-            var content = File.ReadAllText(resultFile);
-            Console.WriteLine(content);
-
-            if (content.Contains("Failed: 0") == true)
-            {
-                return true;
-            }
-        }
-        else
-        {
-            Console.WriteLine("No result file found.");
-        }
-
-        return false;
     }
 }

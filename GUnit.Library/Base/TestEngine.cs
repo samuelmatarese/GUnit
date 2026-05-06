@@ -15,7 +15,6 @@ public class TestEngine(SceneTree tree)
 
     public async Task RunAll()
     {
-        Console.WriteLine("In TestEngine");
         var result = new TestResult();
         var tests = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(a => a.GetTypes())
@@ -53,6 +52,7 @@ public class TestEngine(SceneTree tree)
         }
 
         Console.WriteLine(result.ToString());
+        System.Environment.Exit(result.Failed > 0 ? 1 : 0);
     }
 
     private IEnumerable<TestCase> ConvertTheoriesToNormalTests(Type classType)
