@@ -12,10 +12,6 @@ public class TestCommand : ICommand
             "GUnit/GodotTestRunner.cs"
         );
 
-        Console.WriteLine("Test");
-        Console.WriteLine(testRunnerPath);
-
-        Console.WriteLine("TestRunner Exists: " + File.Exists(testRunnerPath));
         var config = ConfigurationHelper.ReadConfig();
         
         var process = new Process
@@ -34,6 +30,16 @@ public class TestCommand : ICommand
         process.Start();
         process.BeginOutputReadLine();
         process.BeginErrorReadLine();
+
+        process.OutputDataReceived += (_, data) =>
+        {
+            Console.WriteLine(data.Data);
+        };
+        
+        process.ErrorDataReceived += (_, data) =>
+        {
+            Console.WriteLine(data.Data);
+        };
 
         await process.WaitForExitAsync();
 
