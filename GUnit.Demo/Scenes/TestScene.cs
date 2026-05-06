@@ -15,8 +15,8 @@ public partial class TestScene : Node3D
 	{
 	}
 
-    public override void _Input(InputEvent @event)
-    {
-        RegisteredInput = @event;
-    }
+	public override void _Input(InputEvent @event)
+	{
+		RegisteredInput = @event;
+	}
 }
