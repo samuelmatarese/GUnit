@@ -7,6 +7,12 @@ public class TestCommand : ICommand
 {
     public async Task Execute()
     {
+        var testRunnerPath = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            "GUnit/GodotTestRunner.cs"
+        );
+
+        Console.WriteLine(testRunnerPath);
         var config = ConfigurationHelper.ReadConfig();
         
         var process = new Process
@@ -14,7 +20,7 @@ public class TestCommand : ICommand
             StartInfo = new ProcessStartInfo
             {
                 FileName = config.GodotExecutablePath,
-                Arguments = "--headless --path . --script ./GUnit/GodotTestRunnerss.cs --quiet --disable-crash-handler",
+                Arguments = $"--headless --path {Directory.GetCurrentDirectory()} --script {testRunnerPath} --quiet --disable-crash-handler",
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
