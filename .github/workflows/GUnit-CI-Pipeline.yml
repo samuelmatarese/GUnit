@@ -3,7 +3,7 @@ name: Debug GUnit Packages
 on:
   push:
     branches:
-      *
+      - '*'
   workflow_dispatch:
 
 jobs:
