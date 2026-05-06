@@ -28,7 +28,7 @@ public class TestSceneTest : BaseTest
 
     [Theory]
     [SimpleData(typeof(InputEventAction))]
-    [SimpleData(typeof(InputEventMouseButton))]
+    [SimpleData(typeof(InputEventKey))]
     [SimpleData(typeof(InputEventMouseMotion))]
     public async Task _Input_Theory(Type inputType)
     {

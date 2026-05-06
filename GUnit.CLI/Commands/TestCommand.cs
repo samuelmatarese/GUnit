@@ -35,6 +35,11 @@ public class TestCommand : ICommand
         {
             Console.WriteLine(data.Data);
         };
+
+        process.ErrorDataReceived += (_, data) =>
+        {
+            Console.WriteLine(data.Data);
+        };
         
         await process.WaitForExitAsync();
 
