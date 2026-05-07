@@ -1,3 +1,6 @@
+[![NuGet](https://img.shields.io/nuget/v/GUnit.svg)](https://www.nuget.org/packages/GUnit/)
+[![NuGet](https://img.shields.io/nuget/v/GUnit.CLI.svg)](https://www.nuget.org/packages/GUnit.CLI/)
+
 # GUnit
 
 GUnit is a lightweight testing framework designed for use with Godot projects.
