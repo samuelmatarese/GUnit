@@ -42,11 +42,11 @@ jobs:
         working-directory: ./GUnit.Demo
         run: gunit test
 
-      - name: Publish to GitHub Packages
+      - name: Publish to NuGet.org
         run: |
           for pkg in ./nupkg/*.nupkg; do
             dotnet nuget push "$pkg" \
-              --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
-              --api-key ${{ secrets.NUGET_TOKEN }} \
+              --source "https://api.nuget.org/v3/index.json" \
+              --api-key "${{ secrets.NUGET_TOKEN }}" \
               --skip-duplicate
           done

@@ -11,9 +11,19 @@
   <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 
+  <Description>Godot testing framework</Description>
+  <PackageTags>godot testing unit-test</PackageTags>
+
   <PackageId>GUnit</PackageId>
-  <Version>0.2.1</Version>
+  <Version>0.3.0</Version>
   <Authors>Samuel Matarese</Authors>
+
+  <RepositoryUrl>https://github.com/samuelmatarese/GUnit</RepositoryUrl>
+  <PackageProjectUrl>https://github.com/samuelmatarese/GUnit</PackageProjectUrl>
+
+  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+  <PublishRepositoryUrl>true</PublishRepositoryUrl>
 </PropertyGroup>
 
 </Project>
