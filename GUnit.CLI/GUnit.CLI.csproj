@@ -8,10 +8,9 @@
 
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>gunit</ToolCommandName>
-    <PackageOutputPath>./nupkg</PackageOutputPath>
 
     <PackageId>GUnit.CLI</PackageId>
-    <Version>0.3.0</Version>
+    <Version>0.3.1</Version>
     <Authors>Samuel Matarese</Authors>
     <Description>Godot testing framework</Description>
     <PackageTags>godot testing unit-test</PackageTags>
