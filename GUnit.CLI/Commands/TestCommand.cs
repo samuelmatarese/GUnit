@@ -15,10 +15,10 @@ public class TestCommand : ICommand
             "GUnit/GodotTestRunner.cs"
         );
 
+        Console.WriteLine($"Building Project at: {currentDirectory}...");
         await ProcessHelper.RunProcess(config, $"--headless --path {currentDirectory} --build-solutions --quit");
 
         Console.WriteLine($"Running TestRunner: {testRunnerPath}");
-        
         var testPrcocess = await ProcessHelper.RunProcess(
             config, 
             $"--headless --path {currentDirectory} --script {testRunnerPath} --quiet --disable-crash-handler --quit-on-finish"

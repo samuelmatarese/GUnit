@@ -15,7 +15,7 @@
   <PackageTags>godot testing unit-test</PackageTags>
 
   <PackageId>GUnit</PackageId>
-  <Version>0.3.0</Version>
+  <Version>0.3.1</Version>
   <Authors>Samuel Matarese</Authors>
 
   <RepositoryUrl>https://github.com/samuelmatarese/GUnit</RepositoryUrl>
