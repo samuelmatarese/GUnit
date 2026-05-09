@@ -4,6 +4,7 @@ using System;
 public partial class TestScene : Node3D
 {
 	public InputEvent RegisteredInput {get; set;}
+	public int InputAmount {get; set;}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -18,5 +19,6 @@ public partial class TestScene : Node3D
 	public override void _Input(InputEvent @event)
 	{
 		RegisteredInput = @event;
+		InputAmount++;
 	}
 }

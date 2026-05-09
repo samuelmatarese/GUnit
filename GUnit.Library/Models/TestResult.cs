@@ -48,6 +48,6 @@ public class TestResult
                 : "(" + testCase.Parameters.First().ToString() + ")"
             : "";
 
-        return $"{testCase.Method.DeclaringType.FullName}.{testCase.Method.Name} {parameterText}" ;
+        return $"{testCase.Method.DeclaringType?.FullName}.{testCase.Method.Name} {parameterText}" ;
     }
 }

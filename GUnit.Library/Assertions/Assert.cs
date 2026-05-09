@@ -18,6 +18,7 @@ public static class Assert
     }  
     
     public static void Equal<T>(T expected, T actualResult, string message = "")
+        where T : notnull
     {
         if (!expected.Equals(actualResult))
             throw new Exception("Assert.Equal failed: " + message);

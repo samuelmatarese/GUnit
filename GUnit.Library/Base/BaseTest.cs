@@ -1,20 +1,21 @@
 using System.Reflection;
 using System.Threading.Tasks;
 using Godot;
+using GUnit.Library.Base.Root;
 
 namespace GUnit.Library.Base;
 
 public abstract class BaseTest
 {
     protected SceneTree? Tree;
-    protected Node? Root;
+    protected RootViewport? Root;
 
     public async Task RunMethod(SceneTree tree, MethodInfo method, object[]? parameters = null)
     {   
         Tree = tree;
-        Root = new Node();
+        Root = new();
         tree.Root.AddChild(Root);
-
+        
         try
         {
             await Setup();
@@ -37,13 +38,25 @@ public abstract class BaseTest
 
     protected async Task WaitForFrame(int frameAmount = 1)
     {
-        if(Tree != null)
+        if(Tree == null)
         {
-            for(var i = 0; i < frameAmount; i++ )
-            {
-                await Tree.ToSignal(Tree, SceneTree.SignalName.ProcessFrame);
-            }
+            throw new NullReferenceException(nameof(Tree));    
         }
+
+        for(var i = 0; i < frameAmount; i++ )
+        {
+            await Tree.ToSignal(Tree, SceneTree.SignalName.ProcessFrame);
+        }
+    }
+
+    protected async Task WaitForPhysicsProcess()
+    {
+        if(Tree == null)
+        {
+            throw new NullReferenceException(nameof(Tree));    
+        }
+
+        await Tree.ToSignal(Tree, SceneTree.SignalName.PhysicsFrame);
     }
 
     protected virtual Task Setup() => Task.CompletedTask;

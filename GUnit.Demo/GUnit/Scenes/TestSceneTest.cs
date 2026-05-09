@@ -18,7 +18,7 @@ public class TestSceneTest : BaseTest
         await WaitForFrame();
 
         // act
-        Input.ParseInputEvent(new InputEventMouseMotion());
+        Root.SimulateInput(new InputEventMouseMotion());
         await WaitForFrame();
 
         // assert
@@ -39,7 +39,7 @@ public class TestSceneTest : BaseTest
 
         // act
         var inputEvent = (InputEvent)Activator.CreateInstance(inputType);
-        Input.ParseInputEvent(inputEvent);
+        Root.SimulateInput(inputEvent);
         await WaitForFrame();
 
         // assert

@@ -41,14 +41,13 @@ public class TestEngine(SceneTree tree)
     {
         var failed = 0;
         var passed = 0;
-        var testInstance = (BaseTest)Activator.CreateInstance(testClass);
+        var testInstance = (BaseTest)Activator.CreateInstance(testClass)!;
         var testCases = testClass.GetMethods()
             .Where(m => m.GetCustomAttributes(typeof(TestAttribute), false).Any())
             .Select(m => new TestCase(m))
             .Concat(ConvertTheoriesToNormalTests(testClass))
             .ToList();
 
-        Console.WriteLine(testCases.Count);
         foreach (var testCase in testCases)
         {
             try
