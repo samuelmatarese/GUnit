@@ -6,10 +6,9 @@ namespace GUnit.Library.Base;
 
 public abstract class BaseTest
 {
-    protected SceneTree Tree;
-    protected Node Root;
+    protected SceneTree? Tree;
+    protected Node? Root;
 
-    #nullable enable
     public async Task RunMethod(SceneTree tree, MethodInfo method, object[]? parameters = null)
     {   
         Tree = tree;
@@ -38,9 +37,12 @@ public abstract class BaseTest
 
     protected async Task WaitForFrame(int frameAmount = 1)
     {
-        for(var i = 0; i < frameAmount; i++ )
+        if(Tree != null)
         {
-            await Tree.ToSignal(Tree, SceneTree.SignalName.ProcessFrame);
+            for(var i = 0; i < frameAmount; i++ )
+            {
+                await Tree.ToSignal(Tree, SceneTree.SignalName.ProcessFrame);
+            }
         }
     }
 
