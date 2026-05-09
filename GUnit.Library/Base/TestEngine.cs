@@ -16,43 +16,58 @@ public class TestEngine(SceneTree tree)
     public async Task<bool> RunAll()
     {
         var result = new TestResult();
-        var tests = AppDomain.CurrentDomain.GetAssemblies()
+        var testTasks = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(a => a.GetTypes())
-            .Where(t => typeof(BaseTest).IsAssignableFrom(t) && !t.IsAbstract);
+            .Where(t => typeof(BaseTest).IsAssignableFrom(t) && !t.IsAbstract)
+            .Select(CreateParallelTasks)
+            .ToList();
 
-        foreach (var type in tests)
+        await Task.WhenAll(testTasks);
+
+        foreach(var testTask in testTasks)
         {
-            var testInstance = (BaseTest)Activator.CreateInstance(type);
-            var testCases = type.GetMethods()
-                .Where(m => m.GetCustomAttributes(typeof(TestAttribute), false).Any())
-                .Select(m => new TestCase(m))
-                .Concat(ConvertTheoriesToNormalTests(type));
-
-            foreach (var testCase in testCases)
-            {
-                result.Total++;
-
-                try
-                {
-                    await testInstance.RunMethod(tree, testCase.Method, testCase.Parameters);
-                    result.Passed++;
-                }
-                catch (Exception e)
-                {
-                    var innerException = e is TargetInvocationException tie && tie.InnerException != null
-                        ? tie.InnerException
-                        : e;
-                        
-                    result.Failed++;
-                    testCase.EncounteredException = innerException;
-                }   
-
-                result.TestCases.Add(testCase);
-            }
+            var (Failed, Passed, Cases) = await testTask;
+            result.Failed += Failed;
+            result.Passed += Passed;
+            result.Total += Failed + Passed;
+            result.TestCases.AddRange(Cases);
         }
 
         Console.WriteLine(result.ToString());
         return result.Failed == 0;
+    }
+
+    private async Task<(int Failed, int Passed, List<TestCase> Cases)> CreateParallelTasks(Type testClass)
+    {
+        var failed = 0;
+        var passed = 0;
+        var testInstance = (BaseTest)Activator.CreateInstance(testClass);
+        var testCases = testClass.GetMethods()
+            .Where(m => m.GetCustomAttributes(typeof(TestAttribute), false).Any())
+            .Select(m => new TestCase(m))
+            .Concat(ConvertTheoriesToNormalTests(testClass))
+            .ToList();
+
+        Console.WriteLine(testCases.Count);
+        foreach (var testCase in testCases)
+        {
+            try
+            {
+                await testInstance.RunMethod(tree, testCase.Method, testCase.Parameters);
+                passed++;
+            }
+            catch (Exception e)
+            {
+                var innerException = e is TargetInvocationException tie && tie.InnerException != null
+                    ? tie.InnerException
+                    : e;
+                        
+                failed++;
+                testCase.EncounteredException = innerException;
+            }   
+        }
+
+        return (failed, passed, testCases);
     }
 
     private IEnumerable<TestCase> ConvertTheoriesToNormalTests(Type classType)
