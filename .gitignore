@@ -9,5 +9,9 @@
 /GUnit.Library/obj/ 
 /GUnit.Library/.godot/
 
+# GUnit.Shared
+/GUnit.Shared/bin/ 
+/GUnit.Shared/obj/ 
+
 # GUnit.Demo
 .godot/

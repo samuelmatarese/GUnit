@@ -1,12 +1,11 @@
-using System.Diagnostics;
 using Gunit.CLI.Helper;
-using Gunit.CLI.Models;
+using GUnit.Shared.Models;
 
 namespace Gunit.CLI.Commands;
 
 public class TestCommand : ICommand
 {
-    public async Task Execute()
+    public async Task Execute(List<CommandParameter> commandParameters)
     {
         var currentDirectory = Directory.GetCurrentDirectory();
         var config = ConfigurationHelper.ReadConfig();

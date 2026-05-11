@@ -1,6 +1,8 @@
+using GUnit.Shared.Models;
+
 namespace Gunit.CLI.Commands;
 
 public interface ICommand
 {
-    Task Execute();
+    Task Execute(List<CommandParameter> commandParameters);
 }

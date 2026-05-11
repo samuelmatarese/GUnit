@@ -1,8 +1,10 @@
+using GUnit.Shared.Models;
+
 namespace Gunit.CLI.Commands;
 
 public class InitCommand : ICommand
 {
-    public async Task Execute()
+    public async Task Execute(List<CommandParameter> commandParameters)
     {
         var projectRoot = Directory.GetCurrentDirectory();
         var targetDir = Path.Combine(projectRoot, "GUnit");
