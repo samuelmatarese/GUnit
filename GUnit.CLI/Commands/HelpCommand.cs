@@ -16,8 +16,7 @@ public class HelpCommand : ICommand
             ?.Split('+')[0] ?? "unknown";
 
         sb.AppendLine("========================================");
-        sb.AppendLine("         Godot Test Runner CLI");
-        sb.AppendLine($"                v{version}");
+        sb.AppendLine($"           GUnit CLI - v{version}");
         sb.AppendLine("========================================");
         sb.AppendLine();
 
