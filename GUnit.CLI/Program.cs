@@ -12,7 +12,8 @@ ICommand command = args[0] switch
     "init" => new InitCommand(),
     "config" => new ConfigurationCommand(),
     "test" => new TestCommand(),
-    _ => throw new ArgumentException($"No Command for '{args[0]}' defined.")
+    "help" => new HelpCommand(),
+    _ => new HelpCommand()
 };
 
 await command.Execute(CommandParameter.ConvertToParameters([.. args[1..]]));
