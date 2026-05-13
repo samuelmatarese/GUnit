@@ -1,12 +1,12 @@
 using System.Text.Json;
 using Gunit.CLI.Helper;
-using Gunit.CLI.Models;
+using GUnit.Shared.Models;
 
 namespace Gunit.CLI.Commands;
 
 public class ConfigurationCommand : ICommand
 {
-    public Task Execute()
+    public Task Execute(List<CommandParameter> commandParameters)
     {
         Console.WriteLine("Path to your Godot Executable:");
         var godotExecutablePath = Console.ReadLine();

@@ -1,5 +1,5 @@
 using System.Text.Json;
-using Gunit.CLI.Models;
+using GUnit.Shared.Models;
 
 namespace Gunit.CLI.Helper;
 

@@ -22,4 +22,8 @@
 
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../GUnit.Shared/GUnit.Shared.csproj" />
+  </ItemGroup>
 </Project>

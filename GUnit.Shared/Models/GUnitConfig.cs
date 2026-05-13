@@ -1,4 +1,4 @@
-namespace Gunit.CLI.Models;
+namespace GUnit.Shared.Models;
 
 public class GUnitConfig(string godotExecutablePath)
 {

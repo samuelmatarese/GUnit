@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUnit.Library", "GUnit.Libr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUnit.Demo", "GUnit.Demo\GUnit.Demo.csproj", "{DC66FCF2-340A-4324-8E6E-79FA2ED1E1E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUnit.Shared", "GUnit.Shared\GUnit.Shared.csproj", "{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{DC66FCF2-340A-4324-8E6E-79FA2ED1E1E4}.Release|x64.Build.0 = Debug|Any CPU
 		{DC66FCF2-340A-4324-8E6E-79FA2ED1E1E4}.Release|x86.ActiveCfg = Debug|Any CPU
 		{DC66FCF2-340A-4324-8E6E-79FA2ED1E1E4}.Release|x86.Build.0 = Debug|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Debug|x64.Build.0 = Debug|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Debug|x86.Build.0 = Debug|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Release|x64.ActiveCfg = Release|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Release|x64.Build.0 = Release|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Release|x86.ActiveCfg = Release|Any CPU
+		{61FF6075-84C3-4553-A4C8-FD61D3BEDABB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
