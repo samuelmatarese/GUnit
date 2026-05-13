@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Godot;
 using GUnit.Library.Attributes;
 using GUnit.Library.Models;
+using GUnit.Shared.Constants;
+using GUnit.Shared.Models;
 
 namespace GUnit.Library.Base;
 
@@ -42,10 +44,12 @@ public class TestEngine(SceneTree tree)
         var failed = 0;
         var passed = 0;
         var testInstance = (BaseTest)Activator.CreateInstance(testClass)!;
+        var filter = GetTestFilter();
         var testCases = testClass.GetMethods()
             .Where(m => m.GetCustomAttributes(typeof(TestAttribute), false).Any())
             .Select(m => new TestCase(m))
             .Concat(ConvertTheoriesToNormalTests(testClass))
+            .Where(t => $"{t.Method.DeclaringType?.FullName}.{t.Method.Name}".Contains(filter ?? ""))
             .ToList();
 
         foreach (var testCase in testCases)
@@ -89,5 +93,12 @@ public class TestEngine(SceneTree tree)
         }
 
         return tests;
+    }
+
+    private string? GetTestFilter()
+    {
+        return CommandParameter.GetFromEnvironment()
+            .FirstOrDefault(c => c.Identifier == ParameterNames.Filter)
+            ?.Value;
     }
 }

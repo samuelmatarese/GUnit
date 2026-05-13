@@ -33,7 +33,7 @@ public class TestResult
 
         stringBuilder.AppendLine("------------------------------------------------------");
         stringBuilder.AppendLine($"Total: {Total}");
-        stringBuilder.AppendLine($"✅Passed: {Passed}");
+        stringBuilder.AppendLine($"✅ Passed: {Passed}");
         stringBuilder.AppendLine($"❌ Failed: {Failed}");
         stringBuilder.AppendLine("------------------------------------------------------");
 

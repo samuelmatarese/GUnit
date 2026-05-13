@@ -1,3 +1,6 @@
+using System.Text.Json;
+using GUnit.Shared.Constants;
+
 namespace GUnit.Shared.Models;
 
 public class CommandParameter(string identifier, string? value = null)
@@ -19,11 +22,13 @@ public class CommandParameter(string identifier, string? value = null)
             {
                 var commandParameter = new CommandParameter(arg);
             
-                if(!args[i + 1].StartsWith(ArgumentIdentifierPrefix))
+                if(args.Count > i + 1 && !args[i + 1].StartsWith(ArgumentIdentifierPrefix))
                 {
                     commandParameter.Value = args[i + 1];
                     i++;      
                 }
+
+                commandParameters.Add(commandParameter);
             }
             else
             {
@@ -32,5 +37,18 @@ public class CommandParameter(string identifier, string? value = null)
         }
 
         return commandParameters;
+    }
+
+    public static List<CommandParameter> GetFromEnvironment()
+    {
+        var parameterText = Environment.GetEnvironmentVariable(ParameterNames.GUnitParameters);
+        
+        if (string.IsNullOrEmpty(parameterText))
+        {
+            return [];
+        }
+
+        return JsonSerializer.Deserialize<List<CommandParameter>>(parameterText)
+            ?? [];
     }
 }

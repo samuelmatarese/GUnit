@@ -20,7 +20,8 @@ public class TestCommand : ICommand
         Console.WriteLine($"Running TestRunner: {testRunnerPath}");
         var testPrcocess = await ProcessHelper.RunProcess(
             config, 
-            $"--headless --path {currentDirectory} --script {testRunnerPath} --quiet --disable-crash-handler --quit-on-finish"
+            $"--headless --path {currentDirectory} --script {testRunnerPath} --quiet --disable-crash-handler --quit-on-finish",
+            commandParameters
         );
 
         if (testPrcocess.ExitCode != 0)
