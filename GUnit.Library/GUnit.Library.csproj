@@ -16,7 +16,7 @@
   <PackageTags>godot testing unit-test</PackageTags>
 
   <PackageId>GUnit</PackageId>
-  <Version>0.4.0</Version>
+  <Version>0.4.1</Version>
   <Authors>Samuel Matarese</Authors>
 
   <RepositoryUrl>https://github.com/samuelmatarese/GUnit</RepositoryUrl>
@@ -25,10 +25,13 @@
   <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
   <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  <IncludeReferencedProjects>true</IncludeReferencedProjects>
 </PropertyGroup>
 
 <ItemGroup>
-  <ProjectReference Include="../GUnit.Shared/GUnit.Shared.csproj" />
+    <ProjectReference Include="../GUnit.Shared/GUnit.Shared.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
 </ItemGroup>
 
 </Project>

@@ -10,7 +10,7 @@
     <ToolCommandName>gunit</ToolCommandName>
 
     <PackageId>GUnit.CLI</PackageId>
-    <Version>0.4.1</Version>
+    <Version>0.4.2</Version>
     <Authors>Samuel Matarese</Authors>
     <Description>Godot testing framework</Description>
     <PackageTags>godot testing unit-test</PackageTags>
@@ -21,9 +21,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeReferencedProjects>true</IncludeReferencedProjects>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../GUnit.Shared/GUnit.Shared.csproj" />
+    <ProjectReference Include="../GUnit.Shared/GUnit.Shared.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
   </ItemGroup>
 </Project>
