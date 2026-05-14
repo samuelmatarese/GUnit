@@ -3,7 +3,7 @@ using GUnit.Shared.Models;
 
 if (args.Length < 1)
 {
-    Console.WriteLine("No Arguments defined");
+    await new HelpCommand().Execute([]);
     return;
 }
 

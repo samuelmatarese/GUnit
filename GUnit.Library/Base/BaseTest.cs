@@ -16,6 +16,7 @@ public abstract class BaseTest
         Tree = tree;
         Root = new();
         tree.Root.AddChild(Root);
+        await WaitForFrame();
         
         try
         {
