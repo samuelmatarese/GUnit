@@ -1,4 +1,5 @@
 .vscode
+*.lscache
 
 # GUnit.CLI
 /GUnit.CLI/bin/ 
