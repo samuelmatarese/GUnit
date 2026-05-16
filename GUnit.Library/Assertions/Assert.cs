@@ -11,10 +11,17 @@ public static class Assert
             throw new Exception("Assert.True failed: " + message);
     }
 
+    [Obsolete("Use nullable NotNull instead")]
     public static void NotNull(object obj, string message = "")
     {
         if (obj == null)
             throw new Exception("Assert.NotNull failed: " + message);
+    }  
+
+    public static void NotNull(object? obj)
+    {
+        if (obj == null)
+            throw new Exception($"Assert.NotNull failed.");
     }  
     
     public static void Equal<T>(T expected, T actualResult, string message = "")
