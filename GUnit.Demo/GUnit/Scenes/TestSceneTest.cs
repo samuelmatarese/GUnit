@@ -22,7 +22,6 @@ public class TestSceneTest : BaseTest
         await WaitForFrame();
 
         // assert
-        testScene.RegisteredInput = null;
         Assert.NotNull(testScene.RegisteredInput);
         Assert.OfType<InputEventMouseMotion>(testScene.RegisteredInput);
     }
