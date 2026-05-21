@@ -15,6 +15,8 @@
   <Description>Godot testing framework</Description>
   <PackageTags>godot testing unit-test</PackageTags>
 
+  <PackageReadmeFile>README.md</PackageReadmeFile>
+
   <PackageId>GUnit</PackageId>
   <Version>0.4.3</Version>
   <Authors>Samuel Matarese</Authors>
@@ -34,6 +36,10 @@
 
 <ItemGroup>
   <PackageReference Include="GodotSharp" Version="4.6.2" />
+</ItemGroup>
+
+<ItemGroup>
+  <None Include="../README.md" Pack="true" PackagePath="\"/>
 </ItemGroup>
 
 <Target Name="InjectPackageReleaseNotesFromFile" BeforeTargets="GenerateNuspec" Condition="Exists('CHANGELOG.md')">
